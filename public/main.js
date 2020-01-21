@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', function(){
+        const userName = prompt('What is your username?', 'anonymous');
         const socket = io();
         const messageInput = document.querySelector('#message');
         const messagesList = document.querySelector('#messages');
         document.querySelector('form').addEventListener('submit', function(e){
           e.preventDefault();
           console.log(messageInput);
-          socket.emit('chat message', messageInput.value);
+          socket.emit('chat message', `${userName} says: ${messageInput.value}`);
           messageInput.value = '';
         });
 
